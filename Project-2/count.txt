@@ -1,0 +1,9 @@
+  count & for_each (LOOP) 
+  *****************************************************
+
+count: 
+
+resource "aws_vpc" "main" {
+    count = 3
+    cidr_block =
+}

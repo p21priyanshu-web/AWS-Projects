@@ -1,0 +1,4 @@
+*.terraform
+.terraform
+.terrform.lock.hcl
+*.hcl.backup
