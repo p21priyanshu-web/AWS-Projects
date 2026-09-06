@@ -15,11 +15,21 @@ variable "vpc_cidr" {
 }
 
 variable "public_subnet" {
-  type = map(string)
+  type = list(string)
 }
 variable "private_subnet" {
-  type = map(string)
+  type = list(string)
 }
 variable "project_name" {
+  type = string
+}
+variable "instance_type" {
+  type    = string
+  default = "t2.micro"
+}
+# variable "ami_id" {
+#   type = string
+# }
+variable "key_name" {
   type = string
 }
