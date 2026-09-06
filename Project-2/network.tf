@@ -8,7 +8,6 @@ output "available_azs" {
 }
 
 ####################################################################################
-
 resource "aws_vpc" "main" {
   cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
@@ -20,7 +19,6 @@ resource "aws_vpc" "main" {
 }
 
 ####################################################################################
-
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id
   tags = merge(var.tags, {
@@ -29,7 +27,6 @@ resource "aws_internet_gateway" "igw" {
 }
 
 ####################################################################################
-
 resource "aws_subnet" "public_subnet" {
   count                   = 2
   vpc_id                  = aws_vpc.main.id
@@ -41,8 +38,8 @@ resource "aws_subnet" "public_subnet" {
     Name = "public_subnet-${count.index + 1}"
   })
 }
-####################################################################################
 
+####################################################################################
 resource "aws_eip" "nat_gw_eip" {
   domain = "vpc"
   tags = merge(var.tags, {
@@ -112,7 +109,6 @@ resource "aws_route_table_association" "private_rt_assoc" {
 }
 
 ####################################################################################
-
 resource "aws_security_group" "lb_sg" {
   name        = "${var.project_name}-lb-sg"
   description = "Security group for load balancer"
@@ -132,7 +128,7 @@ resource "aws_security_group" "lb_sg" {
   }
 }
 
-
+####################################################################################
 resource "aws_security_group" "web_sg" {
   name        = "${var.project_name}-web-sg"
   description = "Security group for web servers"
