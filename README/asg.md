@@ -545,3 +545,4 @@ Remember the flow:
 In one sentence:
 
 ALB distributes application traffic → Target Group defines the targets and health checks → ASG manages EC2 capacity → Launch Template tells ASG how to launch new EC2 instances.
+Done.
